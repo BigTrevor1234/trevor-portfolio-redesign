@@ -75,11 +75,11 @@ const skills = [
 
 const virtualSupportTools = [
   { category: "Project & task management", icon: BriefcaseBusiness, tools: [["Asana", "Task and project management"], ["Trello", "Visual task tracking"], ["Notion", "Documentation and workspace organization"]] },
-  { category: "Automation & workflow", icon: Workflow, tools: [["Zapier", "Workflow automation"], ["n8n", "Connected workflow building"], ["Make", "Visual process automation"]] },
+  { category: "Automation & workflow", icon: Workflow, tools: [["Zapier", "Workflow automation"]] },
   { category: "Communication & workspace", icon: MessageCircle, tools: [["Google Workspace", "Email, documents, calendars, and collaboration"], ["Gmail", "Inbox organization and client communication"], ["Google Calendar", "Scheduling and coordination"]] },
   { category: "Design & content", icon: Palette, tools: [["Canva", "Quick, polished visual content"]] },
   { category: "Scheduling", icon: CalendarCheck2, tools: [["Calendly", "Appointment scheduling"]] },
-  { category: "Technical & digital", icon: Code2, tools: [["GitHub", "Code and project collaboration"], ["Vercel", "Frontend deployment"], ["Supabase", "Application data and services"], ["VS Code", "Web development workspace"]] },
+  { category: "Technical & digital", icon: Code2, tools: [["GitHub", "Code and project collaboration"], ["Vercel", "Frontend deployment"], ["React", "Responsive interface development"], ["JavaScript", "Interactive web experiences"]] },
 ];
 
 const navItems = [
