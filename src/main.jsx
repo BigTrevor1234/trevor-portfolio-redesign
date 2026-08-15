@@ -14,6 +14,10 @@ import {
   Menu,
   MousePointer2,
   MoveRight,
+  Workflow,
+  MessageCircle,
+  Palette,
+  CalendarCheck2,
   X,
   Zap,
 } from "lucide-react";
@@ -69,6 +73,15 @@ const skills = [
   { label: "Improve", title: "Workflow support", icon: Zap, body: "Clearer systems through Asana, Trello, Notion, Slack, Google Workspace, Canva, Shopify, and Zapier automation." },
 ];
 
+const virtualSupportTools = [
+  { category: "Project & task management", icon: BriefcaseBusiness, tools: [["Asana", "Task and project management"], ["Trello", "Visual task tracking"], ["Notion", "Documentation and workspace organization"]] },
+  { category: "Automation & workflow", icon: Workflow, tools: [["Zapier", "Workflow automation"], ["n8n", "Connected workflow building"], ["Make", "Visual process automation"]] },
+  { category: "Communication & workspace", icon: MessageCircle, tools: [["Google Workspace", "Email, documents, calendars, and collaboration"], ["Gmail", "Inbox organization and client communication"], ["Google Calendar", "Scheduling and coordination"]] },
+  { category: "Design & content", icon: Palette, tools: [["Canva", "Quick, polished visual content"]] },
+  { category: "Scheduling", icon: CalendarCheck2, tools: [["Calendly", "Appointment scheduling"]] },
+  { category: "Technical & digital", icon: Code2, tools: [["GitHub", "Code and project collaboration"], ["Vercel", "Frontend deployment"], ["Supabase", "Application data and services"], ["VS Code", "Web development workspace"]] },
+];
+
 const navItems = [
   { label: "Work", href: "#work" },
   { label: "Approach", href: "#approach" },
@@ -93,6 +106,8 @@ function App() {
       window.location.href = "mailto:sheriffopatola@gmail.com";
     }
   };
+
+  const gmailComposeUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=sheriffopatola%40gmail.com";
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -143,7 +158,7 @@ function App() {
             <div className="hero-grid" />
             <div className="hero-orbit orbit-one" />
             <div className="hero-orbit orbit-two" />
-            <div className="hero-core"><span>SO</span></div>
+            <div className="hero-core"><img src="/assets/sheriff-opatola-portrait.jpg" alt="Sheriff Opatola" /></div>
             <div className="hero-note note-top"><span className="note-index">01</span><span>Build with intent</span></div>
             <div className="hero-note note-bottom"><MousePointer2 size={14} /><span>Scroll to explore</span></div>
             <div className="hero-caption">WEB / SUPPORT / SYSTEMS</div>
@@ -204,16 +219,22 @@ function App() {
                 <div className="skill-icon">{(() => { const ActiveIcon = skills[activeSkill].icon; return <ActiveIcon size={25} />; })()}</div><span className="panel-label">{skills[activeSkill].label}</span><h3>{skills[activeSkill].title}</h3><p>{skills[activeSkill].body}</p><div className="panel-detail"><span>Core tools</span><div>{(activeSkill === 0 ? ["React", "JavaScript", "Tailwind", "Git / GitHub", "Vercel"] : activeSkill === 1 ? ["Research", "Email", "Calendar", "Data", "Customer support"] : ["Asana", "Notion", "Zapier", "Slack", "Google Workspace"]).map((tool) => <i key={tool}>{tool}</i>)}</div></div></motion.div>
             </AnimatePresence>
           </div>
+          <div className="toolkit-block">
+            <div className="toolkit-heading"><div><span className="panel-label">Virtual support toolkit</span><h3>Tools that keep the work moving.</h3></div><p>Familiar platforms, connected thoughtfully to the task at hand.</p></div>
+            <div className="toolkit-grid">
+              {virtualSupportTools.map((group) => { const GroupIcon = group.icon; return <details className="toolkit-group" key={group.category} open><summary><span className="toolkit-group-icon"><GroupIcon size={16} /></span><strong>{group.category}</strong><ChevronDown size={16} /></summary><div className="tool-list">{group.tools.map(([name, use]) => <div className="tool-item" key={name}><span className="tool-badge">{name.slice(0, 1)}</span><span><strong>{name}</strong><small>{use}</small></span></div>)}</div></details>; })}
+            </div>
+          </div>
         </section>
 
         <section className="presence-section">
           <div className="section-frame presence-layout"><div><span className="section-number">04 / A little more context</span><h2>The builder behind the work.</h2></div><div className="presence-copy"><p>I’m an HND graduate in Software & Web Development, based in Nigeria and open to remote work. My experience spans IT administration, freelance web development, volunteer business support, and the everyday coordination that keeps a team moving.</p><p>I like learning in public through real projects — then applying that same curiosity to the practical work: finding information, organizing the details, and making digital tools less frustrating for the people using them.</p><a className="inline-link" href="/Sheriff-Opatola-Resume.pdf" download>Read the full resume <ArrowUpRight size={15} /></a></div></div>
         </section>
 
-        <section className="contact-section" id="contact"><div className="section-frame contact-inner"><div className="contact-top"><span className="section-number">05 / Start a conversation</span><span className="contact-availability"><span className="status-dot" /> Open to remote roles & projects</span></div><h2>Have something worth<br /><em>making clearer?</em></h2><div className="contact-bottom"><p>Tell me what you are building, organizing, or trying to improve. I’m always interested in work where thoughtful execution makes a real difference.</p><div className="contact-actions"><a className="button button-light" href="https://calendly.com/sheriffopatola/30min" target="_blank" rel="noreferrer"><CalendarDays size={16} /> Book a call</a><button className="button button-outline-light" type="button" onClick={copyEmail}>{copied ? <Check size={16} /> : <Mail size={16} />} {copied ? "Copied" : "Email me"}</button></div></div></div></section>
+        <section className="contact-section" id="contact"><div className="section-frame contact-inner"><div className="contact-top"><span className="section-number">05 / Start a conversation</span><span className="contact-availability"><span className="status-dot" /> Open to remote roles & projects</span></div><h2>Have something worth<br /><em>making clearer?</em></h2><div className="contact-bottom"><p>Tell me what you are building, organizing, or trying to improve. I’m always interested in work where thoughtful execution makes a real difference.</p><div className="contact-actions"><a className="button button-light" href="https://calendly.com/sheriffopatola/30min" target="_blank" rel="noreferrer"><CalendarDays size={16} /> Book a call</a><a className="button button-outline-light" href={gmailComposeUrl} target="_blank" rel="noreferrer" aria-label="Open a Gmail compose window addressed to Sheriff Opatola"><Mail size={16} /> Email me</a></div></div></div></section>
       </main>
 
-      <footer className="site-footer"><div className="section-frame footer-inner"><span>© {new Date().getFullYear()} Sheriff Opatola</span><span className="footer-note">Built with curiosity & care</span><div className="footer-links"><a href="https://github.com/BigTrevor1234" target="_blank" rel="noreferrer" aria-label="GitHub"><Code2 size={17} /></a><a href="https://www.linkedin.com/in/sheriff-opatola-599b2a128" target="_blank" rel="noreferrer" aria-label="LinkedIn"><BriefcaseBusiness size={17} /></a><a href="mailto:sheriffopatola@gmail.com" aria-label="Email"><Mail size={17} /></a></div></div></footer>
+      <footer className="site-footer"><div className="section-frame footer-inner"><span>© {new Date().getFullYear()} Sheriff Opatola</span><span className="footer-note">Built with curiosity & care</span><div className="footer-links"><a href="https://github.com/BigTrevor1234" target="_blank" rel="noreferrer" aria-label="GitHub"><Code2 size={17} /></a><a href="https://www.linkedin.com/in/sheriff-opatola-599b2a128" target="_blank" rel="noreferrer" aria-label="LinkedIn"><BriefcaseBusiness size={17} /></a><a href={gmailComposeUrl} target="_blank" rel="noreferrer" aria-label="Open Gmail compose addressed to Sheriff Opatola"><Mail size={17} /></a></div></div></footer>
     </div>
   );
 }
