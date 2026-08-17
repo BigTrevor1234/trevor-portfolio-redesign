@@ -66,11 +66,15 @@ const projects = [
   },
 ];
 
+const capabilityToolsets = {
+  automate: [["n8n concepts", "Connected workflow thinking"], ["Zapier", "Workflow automation"], ["AI workflows", "Practical AI-assisted processes"], ["Zo Computer", "AI-powered computer workflows"]],
+};
+
 const skills = [
   { label: "Organize", title: "Projects, tasks, and workflows", icon: BriefcaseBusiness, body: "Keep projects, tasks, calendars, documents, and workflows structured so work stays visible and moving.", tools: ["Asana", "Trello", "Notion", "Google Workspace"] },
   { label: "Connect", title: "CRM, email, and outreach", icon: MessageCircle, body: "Support clear communication, client information, outreach, and dependable follow-up across a team.", tools: ["Gmail", "Google Workspace", "Slack", "CRM support"] },
   { label: "Create", title: "Content and visual assets", icon: Palette, body: "Turn ideas into useful content, social media materials, presentations, and polished visual assets.", tools: ["Canva", "Social content", "Presentations"] },
-  { label: "Automate", title: "Workflow and AI support", icon: Workflow, body: "Spot repetitive work and shape practical automations and AI-assisted workflows that improve efficiency.", tools: ["n8n concepts", "Zapier", "AI workflows"] },
+  { label: "Automate", title: "Workflow and AI support", icon: Workflow, body: "Spot repetitive work and shape practical automations and AI-assisted workflows that improve efficiency.", tools: capabilityToolsets.automate.map(([name]) => name) },
   { label: "Research", title: "Prospecting and data gathering", icon: Search, body: "Find, organize, and interpret useful information for prospecting, lead research, and business decisions.", tools: ["Prospecting", "Lead research", "Data gathering"] },
   { label: "Build", title: "Web development and implementation", icon: Code2, body: "Build and maintain responsive digital experiences with a practical frontend and deployment mindset.", tools: ["React", "JavaScript", "Tailwind CSS", "GitHub", "Vercel"] },
 ];
@@ -79,7 +83,7 @@ const virtualSupportTools = [
   { category: "ORGANIZE", icon: BriefcaseBusiness, tools: [["Asana", "Projects and task management"], ["Trello", "Visual task tracking"], ["Notion", "Documents and workspace organization"], ["Google Workspace", "Shared documents and coordination"]] },
   { category: "CONNECT", icon: MessageCircle, tools: [["Gmail", "Email management and outreach"], ["Slack", "Team communication"], ["CRM support", "Contact and relationship organization"]] },
   { category: "CREATE", icon: Palette, tools: [["Canva", "Content and visual asset creation"], ["Social content", "Content planning and publishing support"], ["Presentations", "Clear, useful slide decks"]] },
-  { category: "AUTOMATE", icon: Workflow, tools: [["n8n concepts", "Connected workflow thinking"], ["Zapier", "Workflow automation"], ["AI workflows", "Practical AI-assisted processes"], ["Zo Computer", "AI-powered computer workflows"]] },
+  { category: "AUTOMATE", icon: Workflow, tools: capabilityToolsets.automate },
   { category: "RESEARCH", icon: Search, tools: [["Prospecting", "Finding relevant opportunities and contacts"], ["Lead research", "Structured information for outreach"], ["Data gathering", "Collecting and organizing useful facts"]] },
   { category: "BUILD", icon: Code2, tools: [["React", "Responsive interface development"], ["JavaScript", "Interactive web experiences"], ["GitHub", "Code and project collaboration"], ["Vercel", "Frontend deployment"]] },
 ];
