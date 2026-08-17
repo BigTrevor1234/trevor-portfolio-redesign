@@ -17,9 +17,8 @@ import {
   Workflow,
   MessageCircle,
   Palette,
-  CalendarCheck2,
   X,
-  Zap,
+  Search,
 } from "lucide-react";
 import "./styles.css";
 
@@ -68,18 +67,21 @@ const projects = [
 ];
 
 const skills = [
-  { label: "Build", title: "Web development", icon: Code2, body: "Responsive frontends and practical web applications with React, JavaScript, HTML, CSS, Tailwind, Git, GitHub, and Vercel." },
-  { label: "Organize", title: "Virtual assistance", icon: BriefcaseBusiness, body: "Reliable support for email, calendars, research, data entry, documentation, customer follow-up, and digital organization." },
-  { label: "Improve", title: "Workflow support", icon: Zap, body: "Clearer systems through Asana, Trello, Notion, Slack, Google Workspace, Canva, Shopify, and Zapier automation." },
+  { label: "Organize", title: "Projects, tasks, and workflows", icon: BriefcaseBusiness, body: "Keep projects, tasks, calendars, documents, and workflows structured so work stays visible and moving.", tools: ["Asana", "Trello", "Notion", "Google Workspace"] },
+  { label: "Connect", title: "CRM, email, and outreach", icon: MessageCircle, body: "Support clear communication, client information, outreach, and dependable follow-up across a team.", tools: ["Gmail", "Google Workspace", "Slack", "CRM support"] },
+  { label: "Create", title: "Content and visual assets", icon: Palette, body: "Turn ideas into useful content, social media materials, presentations, and polished visual assets.", tools: ["Canva", "Social content", "Presentations"] },
+  { label: "Automate", title: "Workflow and AI support", icon: Workflow, body: "Spot repetitive work and shape practical automations and AI-assisted workflows that improve efficiency.", tools: ["n8n concepts", "Zapier", "AI workflows"] },
+  { label: "Research", title: "Prospecting and data gathering", icon: Search, body: "Find, organize, and interpret useful information for prospecting, lead research, and business decisions.", tools: ["Prospecting", "Lead research", "Data gathering"] },
+  { label: "Build", title: "Web development and implementation", icon: Code2, body: "Build and maintain responsive digital experiences with a practical frontend and deployment mindset.", tools: ["React", "JavaScript", "Tailwind CSS", "GitHub", "Vercel"] },
 ];
 
 const virtualSupportTools = [
-  { category: "Project & task management", icon: BriefcaseBusiness, tools: [["Asana", "Task and project management"], ["Trello", "Visual task tracking"], ["Notion", "Documentation and workspace organization"]] },
-  { category: "Automation & workflow", icon: Workflow, tools: [["Zapier", "Workflow automation"]] },
-  { category: "Communication & workspace", icon: MessageCircle, tools: [["Google Workspace", "Email, documents, calendars, and collaboration"], ["Gmail", "Inbox organization and client communication"], ["Google Calendar", "Scheduling and coordination"]] },
-  { category: "Design & content", icon: Palette, tools: [["Canva", "Quick, polished visual content"]] },
-  { category: "Scheduling", icon: CalendarCheck2, tools: [["Calendly", "Appointment scheduling"]] },
-  { category: "Technical & digital", icon: Code2, tools: [["GitHub", "Code and project collaboration"], ["Vercel", "Frontend deployment"], ["React", "Responsive interface development"], ["JavaScript", "Interactive web experiences"]] },
+  { category: "ORGANIZE", icon: BriefcaseBusiness, tools: [["Asana", "Projects and task management"], ["Trello", "Visual task tracking"], ["Notion", "Documents and workspace organization"], ["Google Workspace", "Shared documents and coordination"]] },
+  { category: "CONNECT", icon: MessageCircle, tools: [["Gmail", "Email management and outreach"], ["Slack", "Team communication"], ["CRM support", "Contact and relationship organization"]] },
+  { category: "CREATE", icon: Palette, tools: [["Canva", "Content and visual asset creation"], ["Social content", "Content planning and publishing support"], ["Presentations", "Clear, useful slide decks"]] },
+  { category: "AUTOMATE", icon: Workflow, tools: [["n8n concepts", "Connected workflow thinking"], ["Zapier", "Workflow automation"], ["AI workflows", "Practical AI-assisted processes"]] },
+  { category: "RESEARCH", icon: Search, tools: [["Prospecting", "Finding relevant opportunities and contacts"], ["Lead research", "Structured information for outreach"], ["Data gathering", "Collecting and organizing useful facts"]] },
+  { category: "BUILD", icon: Code2, tools: [["React", "Responsive interface development"], ["JavaScript", "Interactive web experiences"], ["GitHub", "Code and project collaboration"], ["Vercel", "Frontend deployment"]] },
 ];
 
 const navItems = [
@@ -158,7 +160,7 @@ function App() {
             <div className="hero-grid" />
             <div className="hero-orbit orbit-one" />
             <div className="hero-orbit orbit-two" />
-            <div className="hero-core"><img src="/assets/sheriff-opatola-portrait.jpg" alt="Sheriff Opatola" /></div>
+            <div className="hero-core"><img src="/assets/trevor-profile.jpg" alt="Sheriff Opatola, web developer and virtual support professional" /></div>
             <div className="hero-note note-top"><span className="note-index">01</span><span>Build with intent</span></div>
             <div className="hero-note note-bottom"><MousePointer2 size={14} /><span>Scroll to explore</span></div>
             <div className="hero-caption">WEB / SUPPORT / SYSTEMS</div>
@@ -216,7 +218,7 @@ function App() {
             </div>
             <AnimatePresence mode="wait">
               <motion.div key={activeSkill} id="skill-panel" role="tabpanel" aria-labelledby={`skill-tab-${activeSkill}`} className="skill-panel" initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -18 }} transition={{ duration: shouldReduceMotion ? 0 : 0.28 }}>
-                <div className="skill-icon">{(() => { const ActiveIcon = skills[activeSkill].icon; return <ActiveIcon size={25} />; })()}</div><span className="panel-label">{skills[activeSkill].label}</span><h3>{skills[activeSkill].title}</h3><p>{skills[activeSkill].body}</p><div className="panel-detail"><span>Core tools</span><div>{(activeSkill === 0 ? ["React", "JavaScript", "Tailwind", "Git / GitHub", "Vercel"] : activeSkill === 1 ? ["Research", "Email", "Calendar", "Data", "Customer support"] : ["Asana", "Notion", "Zapier", "Slack", "Google Workspace"]).map((tool) => <i key={tool}>{tool}</i>)}</div></div></motion.div>
+                <div className="skill-icon">{(() => { const ActiveIcon = skills[activeSkill].icon; return <ActiveIcon size={25} />; })()}</div><span className="panel-label">{skills[activeSkill].label}</span><h3>{skills[activeSkill].title}</h3><p>{skills[activeSkill].body}</p><div className="panel-detail"><span>Useful range</span><div>{skills[activeSkill].tools.map((tool) => <i key={tool}>{tool}</i>)}</div></div></motion.div>
             </AnimatePresence>
           </div>
           <div className="toolkit-block">
