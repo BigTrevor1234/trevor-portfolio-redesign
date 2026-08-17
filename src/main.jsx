@@ -79,7 +79,7 @@ const virtualSupportTools = [
   { category: "ORGANIZE", icon: BriefcaseBusiness, tools: [["Asana", "Projects and task management"], ["Trello", "Visual task tracking"], ["Notion", "Documents and workspace organization"], ["Google Workspace", "Shared documents and coordination"]] },
   { category: "CONNECT", icon: MessageCircle, tools: [["Gmail", "Email management and outreach"], ["Slack", "Team communication"], ["CRM support", "Contact and relationship organization"]] },
   { category: "CREATE", icon: Palette, tools: [["Canva", "Content and visual asset creation"], ["Social content", "Content planning and publishing support"], ["Presentations", "Clear, useful slide decks"]] },
-  { category: "AUTOMATE", icon: Workflow, tools: [["n8n concepts", "Connected workflow thinking"], ["Zapier", "Workflow automation"], ["AI workflows", "Practical AI-assisted processes"]] },
+  { category: "AUTOMATE", icon: Workflow, tools: [["n8n concepts", "Connected workflow thinking"], ["Zapier", "Workflow automation"], ["AI workflows", "Practical AI-assisted processes"], ["Zo Computer", "AI-powered computer workflows"]] },
   { category: "RESEARCH", icon: Search, tools: [["Prospecting", "Finding relevant opportunities and contacts"], ["Lead research", "Structured information for outreach"], ["Data gathering", "Collecting and organizing useful facts"]] },
   { category: "BUILD", icon: Code2, tools: [["React", "Responsive interface development"], ["JavaScript", "Interactive web experiences"], ["GitHub", "Code and project collaboration"], ["Vercel", "Frontend deployment"]] },
 ];
