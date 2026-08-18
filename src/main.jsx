@@ -24,6 +24,15 @@ import "./styles.css";
 
 const portfolioAssets = "/assets";
 
+const workflowEvidence = [
+  { number: "01", kicker: "AUTOMATION", name: "Zapier", description: "Workflow automation", image: `${portfolioAssets}/Zappier Workflow.jpg`, alt: "Zapier workflow automation evidence" },
+  { number: "02", kicker: "CONTENT & CREATIVE", name: "Canva", description: "Visual content and communication", image: `${portfolioAssets}/Canva-Screenshot .jpg`, alt: "Canva visual content and communication evidence" },
+  { number: "03", kicker: "PROJECT MANAGEMENT", name: "Asana", description: "Project and task organization", image: `${portfolioAssets}/asana-workspace1.jpg`, alt: "Asana project and task organization evidence" },
+  { number: "04", kicker: "DATABASE & OPERATIONS", name: "Airtable", description: "Structured information and workflow management", image: `${portfolioAssets}/Aitable-Screenshot.jpg`, alt: "Airtable structured information and workflow management evidence" },
+  { number: "05", kicker: "LIVE STREAMING", name: "StreamYard", mark: "SY" },
+  { number: "06", kicker: "LIVE BROADCASTING", name: "LinkedIn Live", mark: "LI" },
+];
+
 const projects = [
   {
     id: "glow-skincare",
@@ -99,6 +108,7 @@ function App() {
   const [activeProject, setActiveProject] = React.useState(null);
   const [activeSkill, setActiveSkill] = React.useState(0);
   const [copied, setCopied] = React.useState(false);
+  const [evidenceOpen, setEvidenceOpen] = React.useState(false);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   const shouldReduceMotion = useReducedMotion();
@@ -121,6 +131,15 @@ function App() {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+
+  React.useEffect(() => {
+    if (!evidenceOpen) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setEvidenceOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [evidenceOpen]);
 
   return (
     <div className="site-shell">
@@ -196,7 +215,7 @@ function App() {
                   {activeProject === project.id && (
                     <motion.div className="project-detail" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
                       <p>{project.detail}</p>
-                      <div className="detail-actions">{project.live && <a href={project.live} target="_blank" rel="noreferrer">{project.type === "Support" ? "Book a conversation" : "View live project"} <ArrowUpRight size={15} /></a>}{project.code && <a href={project.code} target="_blank" rel="noreferrer">{project.live ? "View source" : "View project on GitHub"} <Code2 size={15} /></a>}</div>
+                      <div className="detail-actions">{project.id === "operations" ? <button className="evidence-link" type="button" onClick={() => setEvidenceOpen(true)}>Explore workflow evidence <ArrowUpRight size={15} /></button> : <>{project.live && <a href={project.live} target="_blank" rel="noreferrer">View live project <ArrowUpRight size={15} /></a>}{project.code && <a href={project.code} target="_blank" rel="noreferrer">{project.live ? "View source" : "View project on GitHub"} <Code2 size={15} /></a>}</>}</div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -234,10 +253,18 @@ function App() {
         </section>
 
         <section className="presence-section">
-          <div className="section-frame presence-layout"><div><span className="section-number">04 / A little more context</span><h2>The builder behind the work.</h2></div><div className="presence-copy"><p>I’m an HND graduate in Software & Web Development, based in Nigeria and open to remote work. My experience spans IT administration, freelance web development, volunteer business support, and the everyday coordination that keeps a team moving.</p><p>I like learning in public through real projects — then applying that same curiosity to the practical work: finding information, organizing the details, and making digital tools less frustrating for the people using them.</p><a className="inline-link" href="/Sheriff-Opatola-Resume.pdf" download>Read the full resume <ArrowUpRight size={15} /></a></div></div>
+          <div className="section-frame presence-layout"><div><span className="section-number">04 / A little more context</span><h2>The builder behind the work.</h2></div><div className="presence-copy"><p>I’m an HND graduate in Software & Web Development, based in Nigeria and open to remote work. My experience spans IT administration, freelance web development, volunteer business support, and the everyday coordination that keeps a team moving.</p><p>I like learning in public through real projects — then applying that same curiosity to the practical work: finding information, organizing the details, and making digital tools less frustrating for the people using them.</p><a className="inline-link" href="/Sheriff%20Opatola%20resume.pdf" target="_blank" rel="noreferrer">Read the full resume <ArrowUpRight size={15} /></a></div></div>
         </section>
 
         <section className="contact-section" id="contact"><div className="section-frame contact-inner"><div className="contact-top"><span className="section-number">05 / Start a conversation</span><span className="contact-availability"><span className="status-dot" /> Open to remote roles & projects</span></div><h2>Have something worth<br /><em>making clearer?</em></h2><div className="contact-bottom"><p>Tell me what you are building, organizing, or trying to improve. I’m always interested in work where thoughtful execution makes a real difference.</p><div className="contact-actions"><a className="button button-light" href="https://calendly.com/sheriffopatola/30min" target="_blank" rel="noreferrer"><CalendarDays size={16} /> Book a call</a><a className="button button-outline-light" href={gmailComposeUrl} target="_blank" rel="noreferrer" aria-label="Open a Gmail compose window addressed to Sheriff Opatola"><Mail size={16} /> Email me</a></div></div></div></section>
+        <AnimatePresence>
+          {evidenceOpen && <motion.div className="evidence-backdrop" role="presentation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setEvidenceOpen(false)}>
+            <motion.div className="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="evidence-title" initial={{ opacity: 0, y: 20, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: .98 }} onClick={(event) => event.stopPropagation()}>
+              <div className="evidence-modal-head"><div><span className="section-number">Workflow evidence</span><h2 id="evidence-title">Digital operations, in practice.</h2></div><button className="evidence-close" type="button" onClick={() => setEvidenceOpen(false)} aria-label="Close workflow evidence"><X size={19} /></button></div>
+              <div className="evidence-grid">{workflowEvidence.map((item) => <article className="evidence-item" key={item.number}><div className={`evidence-visual ${item.mark ? "is-placeholder" : ""}`}>{item.image ? <img src={item.image} alt={item.alt} /> : <span>{item.mark}</span>}</div><div className="evidence-copy"><span className="evidence-number">{item.number}</span><span className="evidence-kicker">{item.kicker}</span><strong>{item.name}</strong><p>{item.description}</p></div></article>)}</div>
+            </motion.div>
+          </motion.div>}
+        </AnimatePresence>
       </main>
 
       <footer className="site-footer"><div className="section-frame footer-inner"><span>© {new Date().getFullYear()} Sheriff Opatola</span><span className="footer-note">Built with curiosity & care</span><div className="footer-links"><a href="https://github.com/BigTrevor1234" target="_blank" rel="noreferrer" aria-label="GitHub"><Code2 size={17} /></a><a href="https://www.linkedin.com/in/sheriff-opatola-599b2a128" target="_blank" rel="noreferrer" aria-label="LinkedIn"><BriefcaseBusiness size={17} /></a><a href={gmailComposeUrl} target="_blank" rel="noreferrer" aria-label="Open Gmail compose addressed to Sheriff Opatola"><Mail size={17} /></a></div></div></footer>

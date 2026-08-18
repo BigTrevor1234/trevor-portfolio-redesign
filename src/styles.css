@@ -112,3 +112,20 @@ h1 span, h2 span { color: var(--green); font-family: "Playfair Display", serif; 
   .site-shell { overflow: clip; }
   .desktop-nav.is-open { z-index: 30; }
 }
+
+.evidence-link { display: inline-flex; align-items: center; gap: 7px; color: var(--green); background: transparent; font-size: 12px; font-weight: 600; border-bottom: 1px solid #a9c0af; padding: 0 0 4px; }
+.evidence-backdrop { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 28px; background: #10251dcc; }
+.evidence-modal { width: min(1040px, 100%); max-height: min(840px, 92vh); overflow: auto; background: var(--paper); padding: 34px; box-shadow: 0 24px 80px #07150e66; }
+.evidence-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.evidence-modal-head h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.07em; line-height: 1; margin: 12px 0 0; }
+.evidence-close { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line); color: var(--ink); background: transparent; }
+.evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-top: 24px; }
+.evidence-item { border: 1px solid var(--line); background: #f8f7f2; }
+.evidence-visual { height: 150px; overflow: hidden; background: var(--deep); }
+.evidence-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.evidence-visual.is-placeholder { display: grid; place-items: center; background: var(--deep); color: var(--lime); }
+.evidence-visual.is-placeholder span { font: italic 500 54px "Playfair Display", serif; letter-spacing: -.1em; }
+.evidence-copy { display: grid; gap: 6px; padding: 14px 16px 17px; }
+.evidence-number, .evidence-kicker { font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+.evidence-number { color: var(--green); }.evidence-kicker { color: var(--muted); }.evidence-copy strong { font-size: 20px; letter-spacing: -.04em; }.evidence-copy p { color: var(--muted); font-size: 12px; line-height: 1.45; margin: 0; }
+@media (max-width: 600px) { .evidence-backdrop { padding: 14px; }.evidence-modal { padding: 22px; max-height: 94vh; }.evidence-grid { grid-template-columns: 1fr; }.evidence-visual { height: 135px; }.evidence-modal-head h2 { font-size: 2rem; } }
